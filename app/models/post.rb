@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
     belongs_to :user
-    has_many :resources 
+    belongs_to :resource
+
+    def self.recent_post
+        
 end
