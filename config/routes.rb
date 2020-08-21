@@ -1,22 +1,22 @@
 Rails.application.routes.draw do
-  get '/', to: 'sessions#welcome'
+  root to: 'sessions#welcome'
   
-  get '/login', to: 'sessions#new' as "login"
+  get '/login', to: 'sessions#new'
+  get '/auth/facebook/callback', to: 'sessions#create'
   post '/login', to: 'sessions#create'
   
-  get '/signup', to: 'users#new', as: "signup"
+  get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   
   
-  delete '/logout', to: 'sessions#destroy' as: "logout"
+  delete '/logout', to: 'sessions#destroy'
   
   
-  get '/auth/facebook/callback', to: 'sessions#create'
+
 
   resources :resources
   resources :posts
-  resources :users, only: [] do
-    "/users/:user_id"
-  end
+  resources :users
+  
 
 end
