@@ -2,36 +2,14 @@ class ResourcesController < ApplicationController
 
 
     def index
-       
+       @resources = Resource.all
     end
 
-    def new
-        @resource = Resource.new
-    end
-
-    def create
-     if current_user.logged_in?
-        @resource = Resource.new(resource_params)
-        if @resource.save
-            redirect_to #thank you for submitting a resource page
-        else
-            render :new
-        else 
-            render :new 
-        end
+   def show
      
-    end
+   end
 
-    def destroy
-        if current_user == @resource.user 
-          @resource.destroy
-          redirect_to resource_path
-        else
-            redirect_to 
-        end
-        
-
-    end
+  
   private
   def resource_params
      params.require(:resource).permit!(

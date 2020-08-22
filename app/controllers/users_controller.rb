@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+    #login 
+    def index 
+      @users = User.all
+    end
 
     def new
         @user = User.new
@@ -9,7 +13,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user_id
-            redirect_to user_path
+            redirect_to root_path
         else
             render :new
         end
@@ -19,6 +23,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :username, :password)
+        params.require(:user).permit(:name, :email, :username, :password)
     end
 end

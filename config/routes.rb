@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   
 
 
-  resources :resources
+  resources :resources, only: [:index, :show]
   resources :posts
-  resources :users
-  
+  resources :users, only: [:index, :new, :show]
+  resources :sessions
 
 end
