@@ -1,0 +1,17 @@
+
+<%= form_for  @resource do |f| %>
+  <div>
+    <%= f.label :disorder %>
+    <%= f.text_field :disorder %>
+  </div><br>
+  <div>
+    <%= f.label :category %> <br>
+    <%= f.text_area :category %>
+  </div><br>
+  <div>
+    <%= f.label :resource_link %>
+    <%= f.text_field :resource_link %>
+  </div><br>
+
+  <%= f.submit  %>
+<% end %>

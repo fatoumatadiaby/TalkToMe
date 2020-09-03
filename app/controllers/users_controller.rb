@@ -1,28 +1,35 @@
 class UsersController < ApplicationController
-    #login 
-    def index 
-      @users = User.all
-    end
-
+    #signup
+   
+    
     def new
         @user = User.new
-        render :new
+       
     end
    
     def create
       @user = User.new(user_params)
         if @user.save
-            session[:user_id] = @user_id
-            redirect_to root_path
+            session[:user_id] = @user.id
+            redirect_to home_path
         else
             render :new
         end
     end
-
-
-
-    private
-    def user_params
-        params.require(:user).permit(:name, :email, :username, :password)
+    
+    def show 
+        @user = User.find_by_id(params[:id])
+        redirect_to user_path
     end
+    
+    def resources_post_comments
+         @resources = current_user.resources
+         @posts = current_user.posts
+         @comments = current_user.comments
+    end
+    
+    private
+     def user_params
+        params.require(:user).permit(:username, :password, :name, :email)
+     end
 end

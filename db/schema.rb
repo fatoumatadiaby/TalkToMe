@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_004307) do
+ActiveRecord::Schema.define(version: 2020_09_02_192324) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "username"
+    t.text "body"
+    t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "user_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
@@ -19,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_004307) do
     t.integer "resource_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "published_date"
   end
 
   create_table "resources", force: :cascade do |t|
@@ -27,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_004307) do
     t.string "resource_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_004307) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "provider"
   end
 
 end

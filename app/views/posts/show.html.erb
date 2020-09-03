@@ -1,1 +1,25 @@
-<h1>post id</h1>
+<h1><%= @post.title%></h1>
+<h1><%= @post.body%></h1>
+<hr>
+<%= link_to "Edit Post", edit_post_path(@post) %>
+<%= link_to "Delete Post", post_path(@post), method: :delete %>
+<hr>
+
+<br>
+<br>
+<h3>Comments</h3>
+<br>
+<%= form_with(model: [@post, @post.comments.build]) do |f| %>
+<%= f.text_area :body, placeholder: "comment here" %> <br>
+<%= f.submit "enter" %>
+<%end%>
+<br>
+<hr>
+<%=@comments.each do |comment| %>
+<h5>
+<strong> <%= comment.user.post.username %> </strong> wrote <small> <%= time_ago_in_words(comment.created_at)  %> ago</small>
+</h5>
+<h3>
+  <%= comment.body %>
+</h3>
+<% end %>

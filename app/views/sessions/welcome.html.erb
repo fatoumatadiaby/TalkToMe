@@ -1,7 +1,10 @@
 <h1>welcome</h1>
- <%= link_to "Log In", login_path %>
-  <%= link_to "signup", signup_path %>
-   <%= link_to "resources", resources_path %>
-   <div>
-        <%=link_to "Logout", logout_path, method: "delete"%>
-    </div>
+<% if !logged_in? %>
+<div>
+  
+  <p>welcome to talktome</p>
+</div>
+<% else %>
+ <p>welcome back <%=current_user.name%> </p>
+</div>
+<% end %>

@@ -1,5 +1,6 @@
 <h1>Signup</h1>
 
+
 <%= form_for @user, url: signup_path do |f| %>
  
  <div>
@@ -8,7 +9,7 @@
  </div>
  <div>
      <%= f.label :email%>
-     <%= f.text_field :email%>
+     <%= f.email_field :email%>
  </div>
  
  <div>
@@ -19,10 +20,13 @@
      <%= f.label :password%>
      <%= f.password_field :password%>
  </div>
+     <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+ <div></div>
       <%=f.submit "Signup"%>
  
  <%end %>
   <%= link_to "Facebook Signup", '../auth/facebook' %>
-   <%= link_to "Log In", login_path %>
+   
 
   
