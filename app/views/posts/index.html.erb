@@ -8,8 +8,8 @@
 
 <% @posts.each do |post| %>
   <div>
-    <h3><%= post.title %></h3>
-    
+    <h3><%= post.title.upcase %></h3>
+    <p><%= truncate(post.body, :length => 25) %></p>
     <p><%= post.published_date %></p>
     <%= link_to "Read Post", post_path(post) %>
   </div>

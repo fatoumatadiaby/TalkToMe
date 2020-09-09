@@ -15,13 +15,20 @@ Rails.application.routes.draw do
     resources :comments
   end 
 
+  resources :resources do
+    resources :comments
+  end 
   resources :users do
      resources :posts
   end
 
+  resources :users do
+    resources :resources
+ end
+
   
   resources :users, only: [:new, :create]
-  resources :resources, only: [:new, :index, :show]
+  resources :resources
   resources :post
 
 

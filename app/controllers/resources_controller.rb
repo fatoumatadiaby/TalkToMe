@@ -1,11 +1,13 @@
 class ResourcesController < ApplicationController
-   def index
+   before_action :set_resource, only:[:show, :edit, :update, :destroy]
+
+  def index
       @resources = Resource.all 
   end
 
  
   def show
-    set_resource
+   @comment = @post.comments
   end
 
   def new
@@ -13,14 +15,13 @@ class ResourcesController < ApplicationController
   end
   
   def create
-      @resource = current_user.resources.build(resource_params)
-  
-      if @resource.save
-        redirect_to resources_path
-      else
-        render :new
-      end
-    end
+    @resource = current_user.resources.build(resource_params)
+       if @resource.save
+         redirect_to resources_path
+       else
+         render :new
+       end
+   end
   
   
   def edit
@@ -30,14 +31,16 @@ class ResourcesController < ApplicationController
   def update
     set_resource
       if @resource.update(resource_params)
-        redirect_to user_post_path(current_user, @post)
+        redirect_to user_resource_path(current_user, @resource)
       else
         render :edit
       end
-    end
+   end
 
-  
-
+  def destroy
+    @resource.destroy
+    redirect_to user_resources_path(current_user)
+   end
   
   private
   def resource_params

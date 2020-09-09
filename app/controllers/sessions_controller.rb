@@ -11,24 +11,26 @@ class SessionsController < ApplicationController
 
  
   def create
+    
     if auth
       user = User.create_with_omniauth(auth)
       session[:user_id] = user.id    
       redirect_to home_path
+
     else
-      @user = User.find_by(email: params[:user][:email])
+      @user = User.find_by(username: params[:user][:username])
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
             redirect_to home_path
       else
-        render :new
+        redirect_to login_path
       end
     end
   end
 
   def destroy
     session.clear
-    redirect_to logout_path
+    redirect_to home_path
   end
 
  

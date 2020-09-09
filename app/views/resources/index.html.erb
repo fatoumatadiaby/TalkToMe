@@ -1,7 +1,8 @@
-
+<h1>resources</h1>
 <%= form_tag(resources_path, method: "get") do %>
   <%= text_field_tag :term, nil,  id: "Search", placeholder: "enter search term" %>
- <%= submit_tag "Search"%>
+  
+  <%= submit_tag "Search"%>
 <% end %>
 
 <%= link_to "add resource", new_resource_path %>
@@ -9,8 +10,8 @@
 <% @resources.each do |resource| %>
   <div>
     <h3><%= resource.disorder%> - </h3>
-        <h3>Type: <%= resource.category%></h3>
-    <h3>Link: <%= link_to resource.resource_link%></h3>
-<br>
+    
+    <%= link_to "view resource", resource_path(resource) %>
+
   </div>
 <% end %>
