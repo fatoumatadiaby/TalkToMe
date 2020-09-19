@@ -1,11 +1,46 @@
-<%= form_for  resource do |f| %>
+<%= form action=  resource do |f| %>
   <div>
     <%= f.label :disorder %>
-    <%= f.text_field :disorder %>
+
+    <label>
+         <input name="resource.disorder" type="radio" />
+         <span>Anxiety Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder" type="radio" />
+         <span>Obsessive-Compulsive Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder" type="radio" />
+         <span>Eating Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder"  type="radio" />
+         <span>Post-Traumatic Stress Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder"  type="radio" />
+         <span>Depression Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder" type="radio" />
+         <span>Attention Deficit Hyperactivity Disorder</span>
+    </label>
   </div><br>
   <div>
     <%= f.label :category %> <br>
-    <%= f.text_area :category %>
+     <label>
+         <input name="resource.category" type="radio" />
+         <span>Book</span>
+    </label>
+      <label>
+         <input name="resource.category" type="radio" />
+         <span>Video</span>
+    </label>
+      <label>
+         <input name="resource.category" type="radio" />
+         <span>Article</span>
+    </label>
   </div><br>
   <div>
     <%= f.label :resource_link %>
@@ -14,3 +49,5 @@
 
   <%= f.submit button_name %>
 <% end %>
+ <p>
+     

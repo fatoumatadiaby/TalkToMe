@@ -1,13 +1,17 @@
 class ResourcesController < ApplicationController
    before_action :set_resource, only:[:show, :edit, :update, :destroy]
-
-  def index
-      @resources = Resource.all 
-  end
+   def index
+    if params[:term]
+       @resources = Resource.search(params[:term])
+ 
+      else
+        @resources = Resource.all.order("created_at DESC")
+     end
+    end
 
  
   def show
-   @comment = @post.comments
+  
   end
 
   def new

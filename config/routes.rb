@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     resources :comments
   end 
 
-  resources :resources do
-    resources :comments
-  end 
+  # resources :resources do
+  #   resources :comments
+  # end 
   resources :users do
      resources :posts
   end
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:new, :create]
   resources :resources
-  resources :post
+  resources :posts
 
 
 end

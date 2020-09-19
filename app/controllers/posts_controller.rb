@@ -2,13 +2,15 @@ class PostsController < ApplicationController
   before_action  :set_post, only: [:show, :edit, :update, :destroy]
   
   def index
+    if params[:term]
+       @posts = Post.search(params[:term])
+    else
         @posts = Post.all.order("created_at DESC")
+     end
     end
 
    
-    def show
-      @comment = @post.comments
-    end
+   
 
     def new
         @post = Post.new 
@@ -22,7 +24,10 @@ class PostsController < ApplicationController
           render :new
         end
     end
-    
+     
+    def show
+
+    end
     
     def edit
       
@@ -44,7 +49,7 @@ class PostsController < ApplicationController
     private
      
     def set_post
-        @post = Post.find_by_id(params[:id])
+        @post = Post.find(params[:id])
     end
 
     def post_params

@@ -96,3 +96,56 @@ scope methods
    <-------------->
     <-------------->
      <-------------->
+
+     <%= form_for  resource do |f| %>
+  <div>
+    <%= f.label :disorder %>
+    <label>
+         <input name="resource.disorder" type="radio" />
+         <span>Anxiety Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder" type="radio" />
+         <span>Obsessive-Compulsive Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder" type="radio" />
+         <span>Eating Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder"  type="radio" />
+         <span>Post-Traumatic Stress Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder"  type="radio" />
+         <span>Depression Disorder</span>
+    </label>
+    <label>
+         <input name="resource.disorder" type="radio" />
+         <span>Attention Deficit Hyperactivity Disorder</span>
+    </label>
+  </div><br>
+  <div>
+    <%= f.label :category %> <br>
+     <label>
+         <input name="resource.category" type="radio" />
+         <span>Book</span>
+    </label>
+      <label>
+         <input name="resource.category" type="radio" />
+         <span>Video</span>
+    </label>
+      <label>
+         <input name="resource.category" type="radio" />
+         <span>Article</span>
+    </label>
+  </div><br>
+  <div>
+    <%= f.label :resource_link %>
+    <%= f.text_field :resource_link %>
+  </div><br>
+
+  <%= f.submit button_name %>
+<% end %>
+ <p>
+     

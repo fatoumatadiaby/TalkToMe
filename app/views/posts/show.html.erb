@@ -4,24 +4,28 @@
 </div>
 <br>
 <h2><%= @post.comments.count %> Comments </h2>
-
+<%= render @post.comments %>
 
 <h3> Add a Comment:</h3>
 <%= form_for([ @post, @post.comments.build]) do |f| %>
+<br>
 <p>
-<%= f.label :username %>
-<%= f.text_field :username %>
+<%= f.hidden_field :user_id, value: current_user.id %>
 </p>
 <br>
 <p>
 <%= f.label :body %>
 <%= f.text_area :body %>
 </p>
+<br>
 <p>
   <%= f.submit  %>
-</p>
-<% end %>
-<br>
+ </p>
+ <% end %>
+
+
+
+
 
 
 <%= link_to "Edit Post", edit_post_path(@post) %>
