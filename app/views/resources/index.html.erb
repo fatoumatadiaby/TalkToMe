@@ -7,7 +7,34 @@
 
 <%= link_to "add resource", new_resource_path %>
 
-<% @resources.each do |resource| %>
+
+<H1> video resources</H1>
+<br>
+<% @resources.by_category("video").each do |resource| %>
+  <div>
+
+    <h3><%= resource.disorder%> - </h3>
+    
+    <%= link_to "view resource", resource_path(resource) %>
+
+  </div>
+<% end %>
+
+<H1> Article resources</H1>
+<br>
+<% @resources.by_category("Article").each do |resource| %>
+  <div>
+
+    <h3><%= resource.disorder%> - </h3>
+    
+    <%= link_to "view resource", resource_path(resource) %>
+
+  </div>
+<% end %>
+
+<H1> Book resources</H1>
+<br>
+<% @resources.by_category("book").each do |resource| %>
   <div>
 
     <h3><%= resource.disorder%> - </h3>

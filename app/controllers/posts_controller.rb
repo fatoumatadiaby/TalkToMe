@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action  :set_post, only: [:show, :edit, :update, :destroy]
   
   def index
+    @posts = current_user.posts
     if params[:term]
        @posts = Post.search(params[:term])
     else
@@ -30,10 +31,13 @@ class PostsController < ApplicationController
     end
     
     def edit
-      
+     if current_user != @post.user
+      redirect_to home_path(current_user)
+      end
     end
 
     def update
+    
       if @post.update(post_params)
           redirect_to user_post_path(current_user, @post)
       else
@@ -42,6 +46,7 @@ class PostsController < ApplicationController
     end
 
     def destroy
+      current_user
        @post.destroy
        redirect_to user_posts_path(current_user)
     end

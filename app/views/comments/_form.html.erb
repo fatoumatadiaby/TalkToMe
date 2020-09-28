@@ -1,16 +1,22 @@
-<%= form_for([ @post, @post.comments.build]) do |f| %>
-<br>
+<h5>Add Comment</h5>
+<%= form_for ([@post, user.comments.build]) do |f| %>
+<% if @error %>
+          <div id="error_explanation">
+            <p><%= @error %></p>
+          </div>
+     <%end%>
 <p>
-<%= f.label :username %>
-<%= f.text_field :username %>
+ <%=f.label :username%>
+  <%=f.text_field(:username)%>
 </p>
-<br>
 <p>
-<%= f.label :body %>
-<%= f.text_area :body %>
+ <%=f.label :body%>
+  <%=f.text_field(:body)%>
 </p>
-<br>
 <p>
-  <%= f.submit  %>
- </p>
+ <%=f.submit %>
+  
+</p>
+
+  
  <% end %>

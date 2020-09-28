@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
   #login
   def welcome
-    current_user
+   
+    if logged_in?
+    current_user.posts
+    end  
   end
  
   def new
@@ -23,6 +26,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
             redirect_to home_path
       else
+        @error = "please fill in all of the information reuired"
         redirect_to login_path
       end
     end

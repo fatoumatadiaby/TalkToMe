@@ -5,6 +5,8 @@ class ResourcesController < ApplicationController
        @resources = Resource.search(params[:term])
  
       else
+     
+        # @resources = Resource.sort_by_category
         @resources = Resource.all.order("created_at DESC")
      end
     end
@@ -15,14 +17,18 @@ class ResourcesController < ApplicationController
   end
 
   def new
-      @resource = Resource.new
+   
+      @resource = Resource.new 
+      
   end
   
   def create
+    
     @resource = current_user.resources.build(resource_params)
        if @resource.save
          redirect_to resources_path
        else
+        @error = "please fill in all of the information reuired"
          render :new
        end
    end

@@ -1,5 +1,11 @@
 <h1>Login</h1>
+<div>
 <%= form_for @user, url: login_path  do |f| %>
+   <% if @error %>
+     <div id="error_explanation">
+       <h5>  <%= @error %> </h5>
+     </div>
+   <% end %>      
  <div>
      <%= f.label :username%>
      <%= f.text_field :username%>
@@ -10,8 +16,8 @@
  </div>
       <%=f.submit "login"%>
 
-<% end %>
-  
+  <% end %>
+ </div>
  
   <%= link_to('Log in with Facebook!', '/auth/facebook') %>
 

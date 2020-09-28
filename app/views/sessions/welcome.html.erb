@@ -6,5 +6,15 @@
 </div>
 <% else %>
  <p>welcome back <%=current_user.name%> </p>
+<p> My Posts </p>
+<% current_user.posts.each do |post| %>
+  <div>
+    <h3><%= post.title.upcase %></h3>
+    <p><%= truncate(post.body, :length => 25) %></p>
+    <p><%= post.published_date %></p>
+    <%= link_to "Read Post", post_path(post) %>
+  </div>
+<% end %>
+
 </div>
 <% end %>

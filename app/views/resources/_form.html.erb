@@ -1,44 +1,51 @@
-<%= form action=  resource do |f| %>
+<%= form_for resource do |f| %>
+<% if @error %>
+          <div id="error_explanation">
+            <p><%= @error %></p>
+     </div>
+     <% end %>     
   <div>
-    <%= f.label :disorder %>
-
+     <p>
+       <%= f.label :disorder %>
+      
+    </p>
     <label>
-         <input name="resource.disorder" type="radio" />
+         <input value="Anxiety Disorder" name="resource[disorder]" type="radio" />
          <span>Anxiety Disorder</span>
     </label>
     <label>
-         <input name="resource.disorder" type="radio" />
+         <input value="Obsessive-Compulsive Disorder" name="resource[disorder]" type="radio" />
          <span>Obsessive-Compulsive Disorder</span>
     </label>
     <label>
-         <input name="resource.disorder" type="radio" />
+         <input value="Eating Disorder" name="resource[disorder]" type="radio" />
          <span>Eating Disorder</span>
     </label>
     <label>
-         <input name="resource.disorder"  type="radio" />
+         <input value="Post-Traumatic Stress Disorder" name="resource[disorder]"  type="radio" />
          <span>Post-Traumatic Stress Disorder</span>
     </label>
     <label>
-         <input name="resource.disorder"  type="radio" />
+         <input value="Depression Disorder" name="resource[disorder]"  type="radio" />
          <span>Depression Disorder</span>
     </label>
     <label>
-         <input name="resource.disorder" type="radio" />
+         <input value="Attention Deficit Hyperactivity Disorder" name="resource[disorder]" type="radio" />
          <span>Attention Deficit Hyperactivity Disorder</span>
     </label>
   </div><br>
   <div>
-    <%= f.label :category %> <br>
-     <label>
-         <input name="resource.category" type="radio" />
+ <%= f.label :category %> <br>
+    <label>
+         <input value="Book" name="resource[category]" type="radio" />
          <span>Book</span>
     </label>
       <label>
-         <input name="resource.category" type="radio" />
+         <input value="Video" name="resource[category]" type="radio" />
          <span>Video</span>
     </label>
       <label>
-         <input name="resource.category" type="radio" />
+         <input value="Article" name="resource[category]" type="radio" />
          <span>Article</span>
     </label>
   </div><br>
@@ -48,6 +55,7 @@
   </div><br>
 
   <%= f.submit button_name %>
+ 
 <% end %>
  <p>
      

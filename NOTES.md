@@ -149,3 +149,10 @@ scope methods
 <% end %>
  <p>
      
+
+     //  <%if  current_user %> 
+  <%= link_to "Edit Post", edit_post_path(@post) %>
+<%= link_to "Delete Post", post_path(@post), method: :delete %>
+<%else%>
+ <%= link_to "view all post", post_path(@post) %>
+<% end %>

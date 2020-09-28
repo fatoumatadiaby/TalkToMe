@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Talk To Me app was designed to help people dealing with mental illnesses. This 
+year i was diagnosed with ADHD, Anxiety disorder and Depession. im fortunate enough to be able to receive full medicare coverage to see a thereapist and get the help that i need but allot of people i know dont have that same privilage so i wanted to create an app that provides resources and a safe place to express your thoughts and receive motivational comments from people who have either been through the same thing or experience the same thing.
 
-Things you may want to cover:
 
-* Ruby version
+* Rails version 6.0.3.2
 
-* System dependencies
+* This app works by running Rails s in the terminal and typing  localhost9393 in the browser
 
-* Configuration
+* I am open to changes and suggestions.
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

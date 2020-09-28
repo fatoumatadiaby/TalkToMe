@@ -13,6 +13,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to home_path
         else
+            @error = "please fill in all of the information reuired"
             render :new
         end
     end

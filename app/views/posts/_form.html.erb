@@ -1,4 +1,9 @@
 <%= form_for post do |f| %>
+<% if @error %>
+          <div id="error_explanation">
+            <p><%= @error %></p>
+          </div> 
+          <% end %>
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -13,4 +18,5 @@
   </div><br>
 
   <%= f.submit button_name %>
+
 <% end %>

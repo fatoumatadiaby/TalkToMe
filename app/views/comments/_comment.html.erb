@@ -1,3 +1,16 @@
-<%= comment.user.username %>
-<%= comment.body %>
-<%= time_ago_in_words(comment.created_at) %>
+
+<% @post.comments.each do |comment| %>
+<% if @error %>
+          <div id="error_explanation">
+            <p><%= @error %></p>
+          </div>
+        <% end %>
+ <%=comment.username%>
+ <br>
+ <%=comment.body%>
+ <br>
+<%= link_to "Delete Comment", [comment.post, comment], method: :delete %>
+<br>
+<%end%>
+
+
