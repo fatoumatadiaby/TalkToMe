@@ -3,7 +3,7 @@
 <%= form_for @user, url: login_path  do |f| %>
    <% if @error %>
      <div id="error_explanation">
-       <h5>  <%= @error %> </h5>
+       <p><%= @error %></p> 
      </div>
    <% end %>      
  <div>

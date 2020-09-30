@@ -1,28 +1,51 @@
 class CommentsController < ApplicationController
+  
 
-  def create 
-
-   set_post
-      @comment = @post.comments.create(params[:comment].permit(:user_id, :body))
-      redirect_to post_path(@post)
+  def new
+    @comment = Comment.new
    
-  end
+   end
 
- def destroy
+
+
+def create 
   
     set_post
-    @comment = @post.comments.find_by_id(params[:id])
+      @comment = @post.comments.build(comment_params)
+      @comment.user_id = current_user.id
+   if @comment.save
+     redirect_to post_comment_path(@post, @comment)
+    else
+      render :new
+    end
+   
+end
+
+  def show
+    set_post
+    set_comment
+  end
+ 
+def destroy
+  
+    set_post
+    @comment = @post.comments.find(params[:id])
   
     @comment.destroy
     redirect_to post_path(@post)
  end 
 
  private
-  def set_post
-   @post = Post.find(params[:post_id])
+ def comment_params
+  params.require(:comment).permit(:body)
+end 
+ 
+ def set_post
+   @post = Post.find_by(params[:post_id])
   end
 
-  def set_resource
-    @resource = Resource.find(params[:resource_id])
+  def set_comment
+    @comment = Comment.find_by_id(params[:id])
   end
+ 
 end

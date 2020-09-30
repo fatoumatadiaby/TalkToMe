@@ -1,9 +1,11 @@
 class Post < ApplicationRecord
     belongs_to :user
     has_many :comments
-    validates :title, :presence => {:message => "must include title"}
-    validates :body, :presence => {:message => "Body cannot be left blank"}
-    validates :published_date, :presence => {:message => "please set a date"}
+    has_many :users, through: :comments
+    
+    validates :title, presence: true
+    validates :body, presence: true 
+    validates :published_date, presence: true
    scope :search, -> (term) {where("title LIKE ?", "%#{term}%")}
 
 end

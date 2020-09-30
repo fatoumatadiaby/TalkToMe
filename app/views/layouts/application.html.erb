@@ -4,15 +4,17 @@
     <title>TalkToMe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+   <div style="padding: 15px; margin-top: 25px; margin-bottom: 40px; margin-left: 20px"> 
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <!-- -->
   <body>
-   <nav>
-   <ul>
-  
+   <nav class="black lighten-1" >
+    <ul id="nav-mobile" class="right">
+        
+
 
              <!-- static links-->
       <li><%= link_to "Home", home_path %></li> 
@@ -23,18 +25,19 @@
           <li><%=link_to "Login", login_path%></li>
           <li><%=link_to "Signup", signup_path%></li>
           <li><%=link_to "resources", resources_path %></li>
+         
       <% else%>
-           <li><%=link_to "posts", posts_path %></li>
-
-             <li><%=link_to "resources", resources_path %></li>
+             <li><%=link_to "posts", posts_path %></li>
+             <li><%=link_to "Resources", resources_path %></li>
             <li><%=link_to "Logout", logout_path, method: "delete"%></li>
+            
       <% end%>
     <li><%=%></li>
    
    </ul>
    </nav>
    
-   
+  
    
     <%= yield %>
   </body>

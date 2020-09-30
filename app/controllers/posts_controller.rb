@@ -22,12 +22,14 @@ class PostsController < ApplicationController
        if @post.save
           redirect_to user_posts_path(current_user)
         else
+          @error = "please fill in all of the information reuired"
           render :new
         end
     end
      
     def show
-
+      set_comment
+      set_post
     end
     
     def edit
@@ -56,8 +58,14 @@ class PostsController < ApplicationController
     def set_post
         @post = Post.find(params[:id])
     end
-
+    def comment_params
+      params.require(:comment).permit(:body)
+    end 
     def post_params
         params.require(:post).permit(:title, :body, :published_date)
+    end
+
+    def set_comment
+      @comment = Comment.find_by_id(params[:id])
     end
 end

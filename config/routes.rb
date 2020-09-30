@@ -15,21 +15,23 @@ Rails.application.routes.draw do
     resources :comments
   end 
 
-  # resources :resources do
-  #   resources :comments
-  # end 
-  resources :users do
-     resources :posts
+  
+  resources :users, only: [:new, :create] do
+     resources :posts 
+     resources :resources
   end
 
-  resources :users do
-    resources :resources
- end
-
+#   resources :users do
+   
+#  end
+ 
+#  resources :resources do
+#   resources :posts
+# end
   
-  resources :users, only: [:new, :create]
+  resources :comments
   resources :resources
-  resources :posts
+  # resources :posts
 
 
 end

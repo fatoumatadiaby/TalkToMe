@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :posts
     has_many :resources
     has_many :comments, through: :posts
-    # has_many :comments, dependent: :destroy
+    has_many :comments, dependent: :destroy
 
     validates :name, presence: true
     validates :username, :email, presence: true, uniqueness: true

@@ -1,20 +1,16 @@
 class ResourcesController < ApplicationController
    before_action :set_resource, only:[:show, :edit, :update, :destroy]
+  
    def index
+    @resources = current_user.resources
     if params[:term]
        @resources = Resource.search(params[:term])
- 
-      else
-     
-        # @resources = Resource.sort_by_category
-        @resources = Resource.all.order("created_at DESC")
+     else
+       @resources = Resource.all.order("created_at DESC")
      end
     end
 
- 
-  def show
-  
-  end
+
 
   def new
    
@@ -33,10 +29,21 @@ class ResourcesController < ApplicationController
        end
    end
   
+   
+  def show
   
-  def edit
-    set_resource
   end
+
+  def edit
+    if current_user != @resource.user
+      redirect_to home_path(current_user)
+      end
+  end
+
+  # def my_resources
+  #   @resources = current_user.resources
+  #   redirect_to user_resources_path
+  # end
 
   def update
     set_resource
@@ -48,6 +55,7 @@ class ResourcesController < ApplicationController
    end
 
   def destroy
+    current_user
     @resource.destroy
     redirect_to user_resources_path(current_user)
    end

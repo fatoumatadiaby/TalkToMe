@@ -1,20 +1,35 @@
-<h1>welcome</h1>
+
 <% if !logged_in? %>
 <div>
   
   <p>welcome to talktome</p>
 </div>
 <% else %>
- <p>welcome back <%=current_user.name%> </p>
-<p> My Posts </p>
+ <h1>welcome back <%=current_user.name%> </h1>
+<h2> My Posts </h2>
+
 <% current_user.posts.each do |post| %>
   <div>
-    <h3><%= post.title.upcase %></h3>
+  <br>
+    <h4><%= post.title.upcase %></h4>
     <p><%= truncate(post.body, :length => 25) %></p>
     <p><%= post.published_date %></p>
     <%= link_to "Read Post", post_path(post) %>
   </div>
+
+<% end %>
+<h2> My Resources </h2>
+<% current_user.resources.each do |r| %>
+  <div>
+  <br>
+    <h4><%= r.disorder.upcase %></h4>
+  
+   <%= link_to "view resource", resource_path(r) %>
+  </div>
+
 <% end %>
 
+
+<% end %>
 </div>
 <% end %>
